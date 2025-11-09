@@ -1,24 +1,66 @@
-import React from 'react'
+/**
+ * Main App Component
+ * Sets up React Router and AuthContext
+ */
+
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-primary-600 mb-4">
-          TaskFlow
-        </h1>
-        <p className="text-gray-600 text-lg">
-          Welcome to TaskFlow - Your task management solution
-        </p>
-        <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-2">✅ Vite + React Ready!</h2>
-          <p className="text-gray-500">
-            Project scaffolding complete. Ready for development.
-          </p>
-        </div>
-      </div>
-    </div>
-  )
+    <BrowserRouter>
+      <AuthProvider>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+            },
+            success: {
+              duration: 3000,
+              iconTheme: {
+                primary: '#0ea5e9',
+                secondary: '#fff',
+              },
+            },
+            error: {
+              duration: 4000,
+            },
+          }}
+        />
+
+        <Routes>
+          {/* Public routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          {/* Protected routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Redirect root to dashboard (will redirect to login if not authenticated) */}
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+          {/* 404 redirect to dashboard */}
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
