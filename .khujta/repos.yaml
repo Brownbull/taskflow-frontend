@@ -1,0 +1,12 @@
+project: taskflow
+repo_type: frontend
+repo_name: taskflow-frontend
+related_repos:
+  backend:
+    name: taskflow-backend
+    type: backend
+    framework: fastapi
+    local_path: ../taskflow-backend
+    status: active
+    phase: prototype
+    description: Backend API for taskflow

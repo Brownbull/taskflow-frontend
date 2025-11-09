@@ -1,0 +1,53 @@
+{
+  "phase": "mvp",
+  "timestamp": "2025-11-09T21:22:51.718003Z",
+  "requirements": {
+    "prototype": {
+      "tests": 2,
+      "coverage": 40,
+      "quality": 6.0,
+      "testTypes": [
+        "smoke",
+        "happy_path"
+      ]
+    },
+    "mvp": {
+      "tests": 4,
+      "coverage": 60,
+      "quality": 7.0,
+      "testTypes": [
+        "smoke",
+        "happy_path",
+        "error",
+        "auth"
+      ]
+    },
+    "growth": {
+      "tests": 5,
+      "coverage": 70,
+      "quality": 7.5,
+      "testTypes": [
+        "smoke",
+        "happy_path",
+        "error",
+        "auth",
+        "edge"
+      ]
+    },
+    "scale": {
+      "tests": 8,
+      "coverage": 80,
+      "quality": 8.0,
+      "testTypes": [
+        "valid",
+        "error",
+        "invalid",
+        "edge",
+        "functional",
+        "visual",
+        "performance",
+        "security"
+      ]
+    }
+  }
+}

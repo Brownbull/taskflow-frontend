@@ -1,0 +1,27 @@
+# Khujta Sphere - local context (gitignored by default)
+ai-state/contexts/
+ai-state/regressions/
+ai-state/reports/
+ai-state/operations.log
+ai-state/operations/
+
+# Environment
+.env
+.env.local
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend specific
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+coverage/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
